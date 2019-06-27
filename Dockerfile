@@ -15,7 +15,7 @@ RUN         curl -L -o /tmp/glassfish-4.1.zip http://download.java.net/glassfish
 
 
 
-RUN     cp /helloworld.war /usr/local/glassfish4/glassfish/domains/domain1/autodeploy/MyProject.war
+COPY     helloworld.war /usr/local/glassfish4/glassfish/domains/domain1/autodeploy/MyProject.war
 
 EXPOSE      8080 4848 8181
 
