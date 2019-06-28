@@ -1,7 +1,7 @@
-<sun-web-app>
+<glassfish-web-app>
    <context-root>/ClientCertWebApp</context-root>
    <security-role-mapping>
      <role-name>master</role-name>
      <principal-name>CN=SB, OU=UN, O=ORG, L=DUB, ST=ST, C=IE</principal-name>
    </security-role-mapping>
-</sun-web-app>
+</glassfish-web-app>
