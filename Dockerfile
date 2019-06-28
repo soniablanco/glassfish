@@ -13,6 +13,7 @@ RUN         curl -L -o /tmp/glassfish-4.1.zip http://download.java.net/glassfish
             rm -f /tmp/glassfish-4.1.zip
 
 RUN mkdir /internalCerts
+# keytool -genkey -v -alias myalias -keyalg RSA -storetype PKCS12 -keystore /certfiles/client_keystore.p12 -storepass mypassword -keypass mypassword
 COPY client_keystore.p12 /internalCerts/client_keystore.p12
 RUN keytool -export -alias myalias -keystore /internalCerts/client_keystore.p12 -storetype PKCS12 -storepass mypassword -rfc -file /internalCerts/selfsigned.cer
 RUN keytool -import -noprompt -file /internalCerts/selfsigned.cer -keystore /usr/local/glassfish4/glassfish/domains/domain1/config/cacerts.jks -alias myalias -storepass changeit 
