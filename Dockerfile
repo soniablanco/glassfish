@@ -12,7 +12,10 @@ RUN         curl -L -o /tmp/glassfish-4.1.zip http://download.java.net/glassfish
             unzip /tmp/glassfish-4.1.zip -d /usr/local && \
             rm -f /tmp/glassfish-4.1.zip
 
-
+RUN mkdir /internalCerts
+COPY client_keystore.p12 /internalCerts/client_keystore.p12
+RUN keytool -export -alias myalias -keystore /certfiles/client_keystore.p12 -storetype PKCS12 -storepass mypwd -rfc -file /internalCerts/selfsigned.cer
+RUN keytool -import -file /internalCerts/selfsigned.cer -keystore /usr/local/glassfish4/glassfish/domains/domain1/config/cacerts.jks -alias myalias -storepass mypwd 
 
 COPY     sample.war /usr/local/glassfish4/glassfish/domains/domain1/autodeploy/sample.war
 
