@@ -20,6 +20,20 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
+
+<security-constraint>
+   <display-name>Constraint1</display-name>
+   <web-resource-collection>
+     <web-resource-name>ClientCertWebApp</web-resource-name>
+     <url-pattern>/*</url-pattern>
+   </web-resource-collection>
+   <auth-constraint>
+     <role-name>master</role-name>
+   </auth-constraint>
+   <user-data-constraint>
+     <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+   </user-data-constraint>
+</security-constraint>
 <login-config>
    <auth-method>CLIENT-CERT</auth-method>
    <realm-name>certificate</realm-name>
